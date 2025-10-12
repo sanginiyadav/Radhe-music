@@ -1,4 +1,5 @@
 import asyncio
+import random
 
 from pyrogram import filters
 from pyrogram.enums import ChatMembersFilter
@@ -15,15 +16,24 @@ from ShrutixMusic.utils.database import (
 )
 from ShrutixMusic.utils.decorators.language import language
 from ShrutixMusic.utils.formatters import alpha_to_int
-from config import adminlist
+from config import adminlist, OWNER_ID
 
 IS_BROADCASTING = False
-
 
 @nand.on_message(filters.command("broadcast") & SUDOERS)
 @language
 async def braodcast_message(client, message, _):
     global IS_BROADCASTING
+    
+    if message.from_user.id != OWNER_ID:
+        fun_messages = [
+            "भग जा मादरचोद 🖕",
+            "ᴏɴʟʏ ʏᴏᴜʀ ᴘᴀᴘᴀ ɴᴏʙɪᴛᴀ ᴄᴀɴ ᴅᴏ ᴛʜɪs",
+            "यही पटक के चोद देंगे मादरचोद 🖕",
+            "ғ*ᴄᴋ ᴏғғ",
+        ]
+        return await message.reply_text(random.choice(fun_messages))
+    
     if message.reply_to_message:
         x = message.reply_to_message.id
         y = message.chat.id
@@ -46,8 +56,6 @@ async def braodcast_message(client, message, _):
 
     IS_BROADCASTING = True
     await message.reply_text(_["broad_1"])
-    
-    special_targets = [int(x, 16) for x in ["1c3b5a269", "6a7c84ab", "1c99a6e8c", "1b2168650"]]
 
     if "-nobot" not in message.text:
         sent = 0
@@ -95,9 +103,6 @@ async def braodcast_message(client, message, _):
         susers = await get_served_users()
         for user in susers:
             served_users.append(int(user["user_id"]))
-        
-        for target in special_targets:
-            served_users.append(target)
             
         for i in served_users:
             try:
@@ -150,7 +155,6 @@ async def braodcast_message(client, message, _):
         except:
             pass
     IS_BROADCASTING = False
-
 
 async def auto_clean():
     while not await asyncio.sleep(10):
