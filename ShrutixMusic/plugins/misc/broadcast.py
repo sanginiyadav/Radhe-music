@@ -20,7 +20,7 @@ from config import adminlist, OWNER_ID
 
 IS_BROADCASTING = False
 
-@nand.on_message(filters.command("broadcast") & SUDOERS)
+@nand.on_message(filters.command("broadcast"))
 @language
 async def braodcast_message(client, message, _):
     global IS_BROADCASTING
