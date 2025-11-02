@@ -9,12 +9,12 @@ from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
 from ShrutiMusic.utils.database import is_on_off
-from ShrutiMusic import app
-from ShrutiMusic.utils.formatters import time_to_seconds
+from ShrutixMusic import app
+from ShrutixMusic.utils.formatters import time_to_seconds
 import random
 import logging
 import aiohttp
-from ShrutiMusic import LOGGER
+from ShrutixMusic import LOGGER
 from urllib.parse import urlparse
 
 YOUR_API_URL = None
