@@ -8,7 +8,7 @@ import yt_dlp
 from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
-from ShrutiMusic.utils.database import is_on_off
+from ShrutixMusic.utils.database import is_on_off
 from ShrutixMusic import app
 from ShrutixMusic.utils.formatters import time_to_seconds
 import random
